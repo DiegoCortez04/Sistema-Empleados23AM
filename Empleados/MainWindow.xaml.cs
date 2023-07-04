@@ -48,13 +48,62 @@ namespace Empleados23AM
                 txtCorreo.Clear();
                 MessageBox.Show("REGISTRO EXITOSO");
             }
-
         }
-
         private void BtnRead_Click(object sender, RoutedEventArgs e)
         {
             int Id = int.Parse(txtId.Text);
             Empleado empleado = services.Red(Id);
+            txtId.Text = empleado.PKEmpleado.ToString();
+            txtNombre.Text = empleado.Nombre.ToString();
+            txtApellido.Text = empleado.Apellido.ToString();
+            txtCorreo.Text = empleado.Correo.ToString();
+            txtFecha.Text = empleado.FechaRegistro.ToString();
+        }
+
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            int Id = int.Parse(txtId.Text);
+            if (string.IsNullOrEmpty(txtId.Text))
+            {
+                MessageBox.Show("CAMPO ID POR LLENAR");
+            }
+            else
+            {
+                services.Delete(Id);
+                txtNombre.Clear();
+                txtApellido.Clear();
+                txtCorreo.Clear();
+                txtFecha.Clear();
+                MessageBox.Show("REGISTRO ELIMINADO");
+            }
+        }
+
+        private void BtnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            int Id = int.Parse(txtId.Text);
+
+            
+
+            if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtApellido.Text) || string.IsNullOrEmpty(txtCorreo.Text))
+            {
+                MessageBox.Show("FALTAN CAMPOS POR LLENAR");
+            }
+            else
+            {
+                Empleado empleado = new Empleado();
+                empleado.PKEmpleado = Id;
+                empleado.Nombre = txtNombre.Text;
+                empleado.Apellido = txtApellido.Text;
+                empleado.Correo = txtCorreo.Text;
+                empleado.FechaRegistro = DateTime.Now;
+                services.Update(empleado);
+
+                txtNombre.Clear();
+                txtApellido.Clear();
+                txtCorreo.Clear();
+                txtFecha.Clear();
+                MessageBox.Show("REGISTRO MODIFICADO");
+            }
         }
     }
 }
