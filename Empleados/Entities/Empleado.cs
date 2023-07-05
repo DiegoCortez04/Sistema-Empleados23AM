@@ -15,5 +15,6 @@ namespace Empleados.Entities
         public string Apellido { get; set; }
         public DateTime FechaRegistro { get; set; }
         public string Correo { get; set; }
+        //DIEGO CORTEZ CARREON
     }
 }

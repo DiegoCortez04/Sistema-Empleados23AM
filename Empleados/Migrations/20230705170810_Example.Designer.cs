@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Empleados23AM.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230630133419_Example")]
+    [Migration("20230705170810_Example")]
     partial class Example
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

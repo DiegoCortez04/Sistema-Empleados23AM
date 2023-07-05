@@ -53,11 +53,23 @@ namespace Empleados23AM
         {
             int Id = int.Parse(txtId.Text);
             Empleado empleado = services.Red(Id);
-            txtId.Text = empleado.PKEmpleado.ToString();
-            txtNombre.Text = empleado.Nombre.ToString();
-            txtApellido.Text = empleado.Apellido.ToString();
-            txtCorreo.Text = empleado.Correo.ToString();
-            txtFecha.Text = empleado.FechaRegistro.ToString();
+            if (empleado != null)
+            {
+                txtId.Text = empleado.PKEmpleado.ToString();
+                txtNombre.Text = empleado.Nombre.ToString();
+                txtApellido.Text = empleado.Apellido.ToString();
+                txtCorreo.Text = empleado.Correo.ToString();
+                txtFecha.Text = empleado.FechaRegistro.ToString();
+            }
+            else
+            {
+                MessageBox.Show("REGISTRO NO ENCONTRADO");
+                txtNombre.Clear();
+                txtApellido.Clear();
+                txtCorreo.Clear();
+                txtFecha.Clear();
+                txtId.Clear();
+            }
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
@@ -104,6 +116,19 @@ namespace Empleados23AM
                 txtFecha.Clear();
                 MessageBox.Show("REGISTRO MODIFICADO");
             }
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnClear_Click(object sender, RoutedEventArgs e)
+        {
+            txtNombre.Clear();
+            txtApellido.Clear();
+            txtCorreo.Clear();
+            txtFecha.Clear();
+            txtId.Clear();
         }
     }
 }
