@@ -86,6 +86,7 @@ namespace Empleados23AM
                 txtApellido.Clear();
                 txtCorreo.Clear();
                 txtFecha.Clear();
+                txtId.Clear();
                 MessageBox.Show("REGISTRO ELIMINADO");
             }
         }
